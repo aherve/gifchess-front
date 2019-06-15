@@ -10,7 +10,7 @@
             - command: 'ng lint'
         - type: parallel
           name: 'BUILD'
-          service: admin
+          service: angular
           steps:
             - command: 'node --max_old_space_size=7000 ./node_modules/@angular/cli/bin/ng build --prod --aot --build-optimizer --progress=false -c production'
     - type: serial

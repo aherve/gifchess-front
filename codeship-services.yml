@@ -7,7 +7,7 @@ aws_cli:
 data:
   image: 'busybox'
   volumes:
-    - './clients:/app'
+    - '.:/app'
 
 angular:
   build:
