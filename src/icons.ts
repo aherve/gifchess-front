@@ -28,7 +28,7 @@ const icons = [
     faFacebookF, faTwitter, faLinkedinIn, faGooglePlusG, faPinterestP, faRedditAlien, faTumblr,
     faWhatsapp, faVk, faFacebookMessenger, faTelegramPlane, faMix, faXing, faCommentAlt, faLine,
     faEnvelope, faCheck, faPrint, faExclamation, faLink, faEllipsisH, faMinus,
-  
+
 ];
 
 library.add(...icons);

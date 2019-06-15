@@ -15,8 +15,8 @@ export class AnalyticsService {
   constructor() { }
 
   public trackEvent(evt: AnalyticsEvent) {
-    if ("ga" in window && typeof window["ga"] === "function") {
-      const ga = window["ga"] as Function
+    if ('ga' in window && typeof window['ga'] === 'function') {
+      const ga = window['ga'] as Function
       ga('send', {
         hitType: 'event',
         ...evt,

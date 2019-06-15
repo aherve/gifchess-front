@@ -9,7 +9,7 @@ import {AnalyticsService} from 'src/app/analytics.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public content = "Turn you lichess games into animated gifs"
+  public content = 'Turn you lichess games into animated gifs'
   public isLoading = false
   public form: FormGroup
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       .replace('https://', '')
       .replace('lichess.org', '')
       .replace('/', '')
-    window.location.href=`/lichess/${strip}`
+    window.location.href = `/lichess/${strip}`
   }
 
 }
