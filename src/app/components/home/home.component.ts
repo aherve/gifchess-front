@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       .replace('https://', '')
       .replace('lichess.org', '')
       .replace('/', '')
-    window.location.href = `/lichess/${strip}`
+    window.location.href = `/api/lichess/${strip}`
   }
 
 }
