@@ -1,0 +1,18 @@
+aws_cli:
+  encrypted_env_file: encrypted.env
+  image: 'mesosphere/aws-cli'
+  volumes_from:
+    - data
+
+data:
+  image: 'busybox'
+  volumes:
+    - './clients:/app'
+
+angular:
+  build:
+    path: .
+    dockerfile_path: 'Dockerfile'
+  volumes:
+    - '.:/app'
+    - '/app/node_modules'
