@@ -17,5 +17,5 @@
       name: 'DEPLOY'
       service: aws_cli
       steps:
-        - command: 's3 sync --delete --exclude=index.html --acl public-read --cache-control max-age=2678400 /app/dist/gifchess s3://gifchess-frontend'
+        - command: 's3 sync --delete --exclude=index.html --acl public-read --cache-control max-age=2678400 /app/dist/giflichess s3://gifchess-frontend'
         - command: 's3 cp --acl public-read --cache-control max-age=60 /app/dist/giflichess/index.html s3://gifchess-frontend/index.html'
