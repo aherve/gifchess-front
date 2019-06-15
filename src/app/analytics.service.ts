@@ -4,7 +4,6 @@ export interface AnalyticsEvent {
   eventCategory: string
   eventAction: string
   eventLabel?: string
-  eventValue?: number
 }
 
 @Injectable({
@@ -15,11 +14,12 @@ export class AnalyticsService {
   constructor() { }
 
   public trackEvent(evt: AnalyticsEvent) {
-    if ('ga' in window && typeof window['ga'] === 'function') {
-      const ga = window['ga'] as Function
-      ga('send', {
-        hitType: 'event',
-        ...evt,
+    if ('gtag' in window && typeof window['gtag'] === 'function') {
+      const gtag = window['gtag'] as Function
+      gtag('event', evt.eventAction, {
+        send_to: 'UA-28822787-3',
+        event_category: evt.eventCategory,
+        event_label: evt.eventLabel,
       })
     }
   }
