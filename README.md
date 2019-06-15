@@ -1,4 +1,4 @@
-# Giflichess
+# Gifchess-front
 
 Frontend angular application to use the [giflichess api](https://github.com/aherve/giflichess)
 
