@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser'
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {AnalyticsService} from 'src/app/analytics.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'ah-home',
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
       .replace('https://', '')
       .replace('lichess.org', '')
       .replace('/', '')
-    window.location.href = `/api/lichess/${strip}`
+    window.location.href = `${environment.apiUrl}/api/lichess/${strip}`
   }
 
 }
