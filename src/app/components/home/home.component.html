@@ -6,10 +6,20 @@
 
   <mat-card>
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="50px" fxLayoutAlign="start center">
+
       <div fxLayout="column" fxLayoutAlign="start center">
         <img class="demo" src="assets/BI5pQatH_upd.gif">
       </div>
-      <form fxFlex="stretch" class="form" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="15px">
+
+      <div *ngIf="isLoading" fxLayout="column" fxLayoutAlign="start start">
+        <mat-spinner fxFlexAlign="center"></mat-spinner>
+        <p>Please wait while your gif is being generated...</p>
+        <p>Your gif will appear below as soon as it is ready.</p>
+        <p>This might take some time</p>
+      </div>
+
+      <form *ngIf="!isLoading" fxFlex="stretch" class="form" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column"
+        fxLayoutGap="15px">
         <p>Get your own gif from a lichess game ID</p>
         <mat-form-field class="input">
           <mat-label> lichess game ID, or game url</mat-label>
@@ -21,18 +31,27 @@
           <mat-icon class="button-icon">cloud_download</mat-icon>
           <span> Download your game gif </span>
         </button>
-        <div *ngIf="isLoading">
-          <p>Please wait while your gif is being generated...</p>
-          <p>This might take some time</p>
-        </div>
       </form>
 
     </div>
   </mat-card>
 
+  <mat-chip-list *ngIf="isError">
+    <mat-chip color="warn" selected> Whoop, something went wrong. Try again later, or with a different url</mat-chip>
+  </mat-chip-list>
+
+  <mat-card *ngIf="result" fxFlexAlign="center" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="15px">
+    <h3> Success ! Here's your gif:</h3>
+    <img id="result" [src]="result">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <span>Right-click </span>
+      <mat-icon inline="true">arrow_forward</mat-icon>
+      <span>"save as" to download it</span>
+    </div>
+  </mat-card>
+
   <div>
     <p>This site is free, its servers are not. Please consider a donation to make things running as long as we can!</p>
-    <p>Every 30$ will pay one server for one month. Enjoy !</p>
     <ah-paypal></ah-paypal>
   </div>
 

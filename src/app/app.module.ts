@@ -14,6 +14,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ShareButtonsModule} from '@ngx-share/buttons'
+import {ApiService} from 'src/app/api.service';
+import {AnalyticsService} from 'src/app/analytics.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import {ShareButtonsModule} from '@ngx-share/buttons'
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ApiService, AnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

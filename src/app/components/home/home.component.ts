@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser'
+import {Component, OnInit} from '@angular/core';
+import {Meta} from '@angular/platform-browser'
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {AnalyticsService} from 'src/app/analytics.service';
-import { environment } from '../../../environments/environment';
+import {ApiService} from 'src/app/api.service';
 
 @Component({
   selector: 'ah-home',
@@ -12,26 +12,24 @@ import { environment } from '../../../environments/environment';
 export class HomeComponent implements OnInit {
   public content = 'Turn you lichess games into animated gifs'
   public isLoading = false
+  public isError = false
   public form: FormGroup
+  public result: any
 
   constructor(
-    private meta: Meta,
     private fb: FormBuilder,
     private analytics: AnalyticsService,
-  ) { }
+    private apiService: ApiService,
+  ) {}
 
-  public ngOnInit () {
-    this.meta.addTags([
-      {name: 'description', content: this.content}
-    ])
-
+  public ngOnInit() {
     this.form = this.fb.group({
-      lichessID: ['', [ Validators.required, Validators.minLength(8) ]]
+      lichessID: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
   public submit() {
-    if (!this.form.valid) { return }
+    if (!this.form.valid) {return }
     this.isLoading = true
     this.analytics.trackEvent({
       eventCategory: 'lichess',
@@ -43,7 +41,19 @@ export class HomeComponent implements OnInit {
       .replace('https://', '')
       .replace('lichess.org', '')
       .replace('/', '')
-    window.location.href = `${environment.apiUrl}/api/lichess/${strip}`
+
+    this.apiService.getGifFromLichess(strip).then(
+      success => {
+        this.isLoading = false
+        this.result = success
+        this.isError = false
+      },
+      () => {
+        this.result = null
+        this.isLoading = false
+        this.isError = true
+      }
+    )
   }
 
 }
