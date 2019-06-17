@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit() {
     this.form = this.fb.group({
-      lichessID: ['', [Validators.required, Validators.minLength(8)]]
+      lichessID: ['', [Validators.required, Validators.minLength(8)]],
+      reversed: false,
     })
   }
 
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.analytics.trackEvent({
       eventCategory: 'lichess',
       eventAction: 'loadGIF',
-      eventLabel: this.form.value.lichessID,
+      eventLabel: `${this.form.value.lichessID}?${this.form.value.reversed}`,
     })
     const strip = this.form.value.lichessID
       .replace('http://', '')
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
       .replace('lichess.org', '')
       .replace('/', '')
 
-    this.apiService.getGifFromLichess(strip).then(
+    this.apiService.getGifFromLichess(strip, this.form.value.reversed).then(
       success => {
         this.isLoading = false
         this.result = success

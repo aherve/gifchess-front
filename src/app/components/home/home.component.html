@@ -21,12 +21,21 @@
       <form *ngIf="!isLoading" fxFlex="stretch" class="form" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column"
         fxLayoutGap="15px">
         <p>Get your own gif from a lichess game ID</p>
+
         <mat-form-field class="input">
           <mat-label> lichess game ID, or game url</mat-label>
           <input matInput formControlName="lichessID">
           <mat-error>Please enter a lichess ID or lichess game url (min 8 characters)</mat-error>
           <mat-hint>example: http://lichess.org/bR4b8jno</mat-hint>
         </mat-form-field>
+
+        <mat-checkbox matInput formControlName="reversed">
+          <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>repeat</mat-icon>
+          <span>Flip board (view from black side)</span>
+          </div>
+        </mat-checkbox>
+
         <button mat-flat-button type="submit" color="primary" fxLayout="row" fxLayoutAlign="center center">
           <mat-icon class="button-icon">cloud_download</mat-icon>
           <span> Download your game gif </span>
