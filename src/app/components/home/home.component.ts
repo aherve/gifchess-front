@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.analytics.trackEvent({
       eventCategory: 'lichess',
       eventAction: 'loadGIF',
-      eventLabel: `${this.form.value.lichessID}?${this.form.value.reversed}`,
+      eventLabel: `${this.form.value.lichessID}?reversed=${this.form.value.reversed}`,
     })
     const strip = this.form.value.lichessID
       .replace('http://', '')
