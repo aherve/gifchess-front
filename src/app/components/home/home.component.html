@@ -18,7 +18,16 @@
         <p>This might take some time</p>
       </div>
 
-      <ah-lichess-form *ngIf="!isLoading" (formEmit)="onLichessSubmit($event)"></ah-lichess-form>
+      <div *ngIf="!isLoading">
+        <mat-tab-group>
+          <mat-tab label="From Lichess url">
+            <ah-lichess-form (formEmit)="onLichessSubmit($event)"></ah-lichess-form>
+          </mat-tab>
+          <mat-tab label="From PGN">
+            <ah-pgn-form (formEmit)="onLichessSubmit($event)"></ah-pgn-form>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
 
     </div>
   </mat-card>

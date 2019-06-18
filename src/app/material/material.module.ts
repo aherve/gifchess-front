@@ -8,12 +8,14 @@ import {
   MatCardModule,
   MatChipsModule,
   MatProgressSpinnerModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatTabsModule
 } from '@angular/material'
 
 @NgModule({
   declarations: [],
   imports: [
+    MatTabsModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatChipsModule,
@@ -25,6 +27,7 @@ import {
     MatDividerModule,
   ],
   exports: [
+    MatTabsModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatChipsModule,

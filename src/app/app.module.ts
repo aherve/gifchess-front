@@ -17,6 +17,7 @@ import {ShareButtonsModule} from '@ngx-share/buttons'
 import {ApiService} from 'src/app/api.service';
 import {AnalyticsService} from 'src/app/analytics.service';
 import {LichessFormComponent} from './components/lichess-form/lichess-form.component';
+import { PgnFormComponent } from './components/pgn-form/pgn-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {LichessFormComponent} from './components/lichess-form/lichess-form.compo
     FooterComponent,
     LayoutComponent,
     PaypalComponent,
-    LichessFormComponent
+    LichessFormComponent,
+    PgnFormComponent
   ],
   imports: [
     HttpClientModule,
