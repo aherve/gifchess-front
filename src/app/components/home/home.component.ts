@@ -1,49 +1,33 @@
-import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser'
-import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {Component} from '@angular/core';
 import {AnalyticsService} from 'src/app/analytics.service';
 import {ApiService} from 'src/app/api.service';
+import {LichessFormEvent} from 'src/app/components/lichess-form/lichess-form.component';
 
 @Component({
   selector: 'ah-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public content = 'Turn you lichess games into animated gifs'
   public isLoading = false
   public isError = false
-  public form: FormGroup
   public result: any
 
   constructor(
-    private fb: FormBuilder,
     private analytics: AnalyticsService,
     private apiService: ApiService,
   ) {}
 
-  public ngOnInit() {
-    this.form = this.fb.group({
-      lichessID: ['', [Validators.required, Validators.minLength(8)]],
-      reversed: false,
-    })
-  }
-
-  public submit() {
-    if (!this.form.valid) {return }
+  public onLichessSubmit(evt: LichessFormEvent) {
     this.isLoading = true
     this.analytics.trackEvent({
       eventCategory: 'lichess',
       eventAction: 'loadGIF',
-      eventLabel: `${this.form.value.lichessID}?reversed=${this.form.value.reversed}`,
+      eventLabel: `${evt.originalQuery}?reversed=${evt.reversed}`,
     })
-    const strip = this.form.value.lichessID
-      .replace('http://', '')
-      .replace('https://', '')
-      .replace('lichess.org', '')
-      .replace('/', '')
 
-    this.apiService.getGifFromLichess(strip, this.form.value.reversed).then(
+    this.apiService.getGifFromLichess(evt.gameID, evt.reversed).then(
       success => {
         this.isLoading = false
         this.result = success

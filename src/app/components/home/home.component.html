@@ -4,8 +4,8 @@
 
   <h3>{{ content }}</h3>
 
-  <mat-card>
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="50px" fxLayoutAlign="start center">
+  <mat-card fxFlexAlign="stretch">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
 
       <div fxLayout="column" fxLayoutAlign="start center">
         <img class="demo" src="assets/BI5pQatH_upd.gif">
@@ -18,29 +18,7 @@
         <p>This might take some time</p>
       </div>
 
-      <form *ngIf="!isLoading" fxFlex="stretch" class="form" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column"
-        fxLayoutGap="15px">
-        <p>Get your own gif from a lichess game ID</p>
-
-        <mat-form-field class="input">
-          <mat-label> lichess game ID, or game url</mat-label>
-          <input matInput formControlName="lichessID">
-          <mat-error>Please enter a lichess ID or lichess game url (min 8 characters)</mat-error>
-          <mat-hint>example: http://lichess.org/bR4b8jno</mat-hint>
-        </mat-form-field>
-
-        <mat-checkbox matInput formControlName="reversed">
-          <div fxLayout="row" fxLayoutAlign="start center">
-          <mat-icon>repeat</mat-icon>
-          <span>Flip board (view from black side)</span>
-          </div>
-        </mat-checkbox>
-
-        <button mat-flat-button type="submit" color="primary" fxLayout="row" fxLayoutAlign="center center">
-          <mat-icon class="button-icon">cloud_download</mat-icon>
-          <span> Download your game gif </span>
-        </button>
-      </form>
+      <ah-lichess-form *ngIf="!isLoading" (formEmit)="onLichessSubmit($event)"></ah-lichess-form>
 
     </div>
   </mat-card>
