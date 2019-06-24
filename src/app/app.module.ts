@@ -11,9 +11,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {LayoutComponent} from './components/layout/layout.component'
 import {MaterialModule} from 'src/app/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PaypalComponent} from './components/paypal/paypal.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ShareButtonsModule} from '@ngx-share/buttons'
 import {ApiService} from 'src/app/api.service';
 import {AnalyticsService} from 'src/app/analytics.service';
 import {LichessFormComponent} from './components/lichess-form/lichess-form.component';
@@ -24,12 +22,10 @@ import {LichessFormComponent} from './components/lichess-form/lichess-form.compo
     HomeComponent,
     FooterComponent,
     LayoutComponent,
-    PaypalComponent,
     LichessFormComponent
   ],
   imports: [
     HttpClientModule,
-    ShareButtonsModule,
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
