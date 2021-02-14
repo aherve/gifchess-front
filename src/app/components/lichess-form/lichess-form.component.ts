@@ -25,7 +25,6 @@ export class LichessFormComponent implements OnInit {
       lichessID: ['', [Validators.required, Validators.minLength(8)]],
       reversed: false,
     })
-    this.form.disable()
   }
 
   public submit() {

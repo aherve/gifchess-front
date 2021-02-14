@@ -4,16 +4,6 @@
 
   <h3>{{ content }}</h3>
 
-  <div fxFlexAlign="stretch" class="deprecation">
-    <p>
-      Sorry guys, but this app is now deprecated. <br>Servers are expensive and I couldn't think of a way to offer this service for free.
-    </p>
-    <p> You can still use this app as a local service, though (see <a href="https://github.com/aherve/giflichess">github source & instructions here</a> )</p>
-    <p>
-      I hope you have a nice day !
-    </p>
-  </div>
-
   <mat-card fxFlexAlign="stretch">
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
 
@@ -34,7 +24,7 @@
   </mat-card>
 
   <mat-chip-list *ngIf="isError">
-    <mat-chip color="warn" selected> Whoop, something went wrong. Try again later, or with a different url</mat-chip>
+    <mat-chip color="warn" selected> Woops, something went wrong. Try again later, or with a different url</mat-chip>
   </mat-chip-list>
 
   <mat-card *ngIf="result" fxFlexAlign="center" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="15px">
@@ -47,16 +37,14 @@
     </div>
   </mat-card>
 
-  <!--
-    -  <div>
-    -    <p>This site is free, its servers are not. Please consider a donation to make things running as long as we can!</p>
-    -    <ah-paypal></ah-paypal>
-    -  </div>
-    -
-    -  <div>
-    -    <p> Share the love: </p>
-    -    <share-buttons [show]="4"></share-buttons>
-    -  </div>
-  -->
+   <div>
+     <p>This site is free, its servers are not. Please consider a donation to make things running as long as we can!</p>
+     <ah-paypal></ah-paypal>
+   </div>
+ 
+   <div>
+     <p> Share the love: </p>
+     <share-buttons [show]="4"></share-buttons>
+   </div>
 
 </div>
