@@ -21,6 +21,7 @@ export class HomeComponent {
 
   public onLichessSubmit(evt: LichessFormEvent) {
     this.isLoading = true
+    this.result = false
     this.analytics.trackEvent({
       eventCategory: 'lichess',
       eventAction: 'loadGIF',

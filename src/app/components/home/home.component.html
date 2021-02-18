@@ -7,7 +7,7 @@
   <mat-card fxFlexAlign="stretch">
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
 
-      <div fxLayout="column" fxLayoutAlign="start center">
+      <div fxLayout="column" fxLayoutAlign="start center" *ngIf="!isLoading && !result">
         <img class="demo" src="assets/BI5pQatH_upd.gif">
       </div>
 
