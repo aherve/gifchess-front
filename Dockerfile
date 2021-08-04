@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:10
+FROM mhart/alpine-node:14
 MAINTAINER Aurélien Hervé <mail@aurelien-herve.com>
 
 RUN npm install -g yarn && \
